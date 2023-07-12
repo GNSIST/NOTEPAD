@@ -16,4 +16,10 @@ div,textarea{box-sizing:border-box;}
         padding: 20px;
         margin-right: 0px;
          }
+ .image-button.active img {
+        /* 활성화된 상태의 스타일을 정의합니다 */
+        background-color: #abb0ac;
+        color: #ffffff;
+        opacity: 0.5;
+        }
         

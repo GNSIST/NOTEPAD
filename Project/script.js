@@ -1,12 +1,37 @@
 $(document).ready(function() {
    $('#button1').click(function() {
-     alert('파일을 불러옵니다')
+         var userDocument = $('#document-input').val();
+
+      if (userDocument) {
+         // 문서 저장 기능 수행
+         var blob = new Blob([userDocument], { type: 'text/plain' });
+         var url = URL.createObjectURL(blob);
+         var a = document.createElement('a');
+         a.href = url;
+         a.download = 'saved_document.txt'; 
+         a.click();
+         URL.revokeObjectURL(url);
+       } else {
+         alert('Please enter a document to save.');
+       }
+      });
    });
+
+   $(document).ready(function() {
+      $('#button1').hover(function() {
+        // 마우스 커서가 버튼 위에 올라갔을 때 실행되는 코드
+        $(this).addClass('active');
+      }, function() {
+        // 마우스 커서가 버튼을 벗어났을 때 실행되는 코드
+        $(this).removeClass('active');
+      });
+    });
  
-   $('#button2').click(function() {
-      alert('저장되었습니다');
+   $(document).ready(function() {
+      $('#button2').click(function() {
+        alert('공유되었습니다')
+      });
    });
- });
 
  $(document).ready(function() {
    $('#button3').click(function() {
@@ -53,6 +78,10 @@ $(document).ready(function(){
       alrert('축소되었습니다')
    });
 });
+
+
+
+
 
  
  
