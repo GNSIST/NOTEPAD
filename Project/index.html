@@ -7,47 +7,85 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-storage-api/1.9.4/jquery.storageapi.min.js" integrity="sha512-rZXftKfJtDmBFPfxFYFjwGM3QadaGJCrOpdaOh3JPkk2wJXSghhUa7bn9CCn7R/UPW29aMuWY0JDnbZEiUYxgQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css"> 
+   <link rel="stylesheet" href="style.css"> 
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    
 </head>
 <body>
     <div id="gnb">
         <div class="logo">BON MEMO</div>
     </div>
-    <div id="content">
-        <div class="image-button" id="button1">
-            <img src="file.png" alt="파일">
+        <div id="content">
+                <button class="dropbtn"><i class="fa-solid fa-pen-to-square"></i> Text </button>
+            
+            <div class="dropdown">
+                <button class="dropbtn">File ▼</button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-file fa-weight-thin white-icon"></i> New  </a>
+                    <a href="#" id="open-link"><i class="fas fa-folder-open white-icon"></i> Open</a>
+                    <a href="#" id="save-link"><i class="fas fa-download white-icon"></i> Save</a>
+                    <a href="#" id="print-link"><i class="fas fa-print white-icon"></i> Print</a>
+                </div>
             </div>
-           <div class="image-button" id="button2">
-            <img src="download.png" alt="저장">
+
+            <div class="dropdown">
+                <button class="dropbtn">Edit ▼</button>
+                <div class="dropdown-content">
+                    <a href="#" id="undo-link"><i class="fas fa-undo-alt white-icon"></i> Undo</a>
+                    <a href="#"><i class="fas fa-redo white-icon"></i> Redo</a>
+                    <a href="#"><i class="fas fa-cut white-icon"></i > Cut</a>
+                    <a href="#"><i class="far fa-copy white-icon"></i> Copy</a>
+                    <a href="#"><i class="far fa-clipboard white-icon"></i> Paste</a>
+                </div>
             </div>
-        <div class="image-button" id="button3">
-            <img src="share.png" alt="공유">
+
+            <div class="dropdown">
+                <button class="dropbtn">View ▼</button>
+                <div class="dropdown-content">
+                    <a href="#" id="fullscreen-link"> <i class="fas fa-expand white-icon"></i> Fullscreen</a>
+                    <a href="#"><i class="fas fa-cogs white-icon"></i>  Setting</a>
+                </div>
             </div>
-        <div class="image-button" id="button4">
-            <img src="cut.png" alt="오리기">
+
+            <div class="dropdown">
+                <button class="dropbtn">Help ▼</button>
+                <div class="dropdown-content">
+                  <a href="#">Link 1</a>
+                  <a href="#">Link 2</a>
+                </div>
             </div>
-        <div class="image-button" id="button5">
-            <img src="copy.png" alt="복사">
-            </div>
-        <div class="image-button" id="button6">
-            <img src="paste.png" alt="붙여넣기">
-            </div>
-        <div class="image-button" id="button7">
-            <img src="undo.png" alt="뒤로갔습니다">
-            </div>
-        <div class="image-button" id="button8">
-            <img src="redo.png" alt="앞으로갔습니다">
-            </div>
-        <div class="image-button" id="button9">
-            <img src="bin.png" alt="삭제했습니다">
-            </div>
-        <div class="image-button" id="button10">
-            <img src="zoomin.png" alt="확대했습니다">
-            </div>
-        <div class="image-button" id="button10">
-            <img src="zoomout.png" alt="축소했습니다">
-            </div>
-     </div>
+        </div>  
+        
+        <div id="btn-box">
+            <div class="image-button" id="button1">
+                <img src="file.png" alt="파일">
+                </div>
+               <div class="image-button" id="button2">
+                <img src="download.png" alt="저장">
+                </div>
+            <div class="image-button" id="button3">
+                <img src="share.png" alt="공유">
+                </div>
+            <div class="image-button" id="button4">
+                <img src="cut.png" alt="오리기">
+                </div>
+            <div class="image-button" id="button5">
+                <img src="bin.png" alt="삭제했습니다">
+                </div>
+            <div class="image-button" id="button6">
+                <img src="undo.png" alt="뒤로갔습니다">
+                </div>
+            <div class="image-button" id="button7">
+                <img src="redo.png" alt="앞으로갔습니다">
+                </div>
+            <div class="image-button" id="button8">
+                <img src="zoomin.png" alt="확대했습니다">
+                </div>
+            <div class="image-button" id="button9">
+                <img src="zoomout.png" alt="축소했습니다">
+                </div>
+        </div>
+     
         <textarea id="document-input" class="tarea" placeholder="내용을 입력해주세요"></textarea>
     </div>
     <div id="footer">Copyright © 2023 BON </div>
