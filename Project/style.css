@@ -56,11 +56,50 @@ div,textarea{box-sizing:border-box;}
 
       .white-icon{color:#000
                  }
+      .font-preview {
+       display: inline-block;
+       padding: 5px;
+       border: 1px solid #ccc;}
 
-
+       /*폰트*/
+       .dropdown-content {
+        max-height: 200px;
+        overflow-y: auto;
+      }
       
-
+      .dropdown-content a {
+        
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+      }
       
+      .dropdown-content a:last-child {
+        border-bottom: none;
+      }
+      
+      .font-name {
+        flex: 1;
+        font-weight: bold;
+      }
+      
+      .font-style {
+        flex: 1;
+        font-family: inherit;
+        text-align: right;
+        font-size: 12px;
+        color: #777;
+      }
+      
+      .dropdown-content.scroll-active {
+        border-bottom: 1px solid #ccc;
+      }
+
+      #word-button{ border-right: 1px solid #b6b6b6;}
+
+      #helpbtn{border-right: 1px solid #b6b6b6;}
+     
+      
+     
 
 
 

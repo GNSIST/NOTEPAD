@@ -9,6 +9,11 @@
     <script src="script.js"></script>
    <link rel="stylesheet" href="style.css"> 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css>   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.20.0/docxtemplater.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+  
     
 </head>
 <body>
@@ -16,39 +21,52 @@
         <div class="logo">BON MEMO</div>
     </div>
         <div id="content">
-                <button class="dropbtn"><i class="fa-solid fa-pen-to-square"></i> Text </button>
-            
+
+            <div class="dropdown">
+                <button class="dropbtn" id="text-button"><i class="fas fa-pen-to-square"></i> Font</button>
+                <div class="dropdown-content" id="font-list">
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn" id="text-button"><i class="fas fa-font"></i> Size </button>
+                <div class="dropdown-content" id="font-size">
+                    <a href="#" data-size="8">8px</a>
+                    <a href="#" data-size="10">10px</a>
+                    <a href="#" data-size="12">12px</a>
+                    <a href="#" data-size="14">14px</a>
+                    <a href="#" data-size="16">16px</a>
+                    <a href="#" data-size="18">18px</a>
+                    <a href="#" data-size="24">24px</a>
+                    <a href="#" data-size="36">36px</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn" id="word-button"><i class="fas fa-file-word"></i> Word</button>
+                <div class="dropdown-content" id="word">
+                </div>
+            </div>
+
             <div class="dropdown">
                 <button class="dropbtn">File ▼</button>
                 <div class="dropdown-content">
-                    <a href="#"><i class="fas fa-file fa-weight-thin white-icon"></i> New  </a>
-                    <a href="#" id="open-link"><i class="fas fa-folder-open white-icon"></i> Open</a>
-                    <a href="#" id="save-link"><i class="fas fa-download white-icon"></i> Save</a>
-                    <a href="#" id="print-link"><i class="fas fa-print white-icon"></i> Print</a>
+                    <a href="#" id="open-link"><i class="fas fa-folder-open white-icon"></i>  Open</a>
+                    <a href="#" id="save-link"><i class="fas fa-download white-icon"></i>  Save</a>
+                    <a href="#" id="print-link"><i class="fas fa-print white-icon"></i>  Print</a>
                 </div>
             </div>
 
             <div class="dropdown">
-                <button class="dropbtn">Edit ▼</button>
+                <button class="dropbtn">  View ▼</button>
                 <div class="dropdown-content">
-                    <a href="#" id="undo-link"><i class="fas fa-undo-alt white-icon"></i> Undo</a>
-                    <a href="#"><i class="fas fa-redo white-icon"></i> Redo</a>
-                    <a href="#"><i class="fas fa-cut white-icon"></i > Cut</a>
-                    <a href="#"><i class="far fa-copy white-icon"></i> Copy</a>
-                    <a href="#"><i class="far fa-clipboard white-icon"></i> Paste</a>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn">View ▼</button>
-                <div class="dropdown-content">
-                    <a href="#" id="fullscreen-link"> <i class="fas fa-expand white-icon"></i> Fullscreen</a>
+                    <a href="#" id="fullscreen-link"> <i class="fas fa-expand white-icon"></i>  Fullscreen</a>
                     <a href="#"><i class="fas fa-cogs white-icon"></i>  Setting</a>
                 </div>
             </div>
 
             <div class="dropdown">
-                <button class="dropbtn">Help ▼</button>
+                <button class="dropbtn" id="helpbtn">Help ▼</button>
                 <div class="dropdown-content">
                   <a href="#">Link 1</a>
                   <a href="#">Link 2</a>
@@ -67,21 +85,18 @@
                 <img src="share.png" alt="공유">
                 </div>
             <div class="image-button" id="button4">
-                <img src="cut.png" alt="오리기">
-                </div>
-            <div class="image-button" id="button5">
                 <img src="bin.png" alt="삭제했습니다">
                 </div>
-            <div class="image-button" id="button6">
+            <div class="image-button" id="button5">
                 <img src="undo.png" alt="뒤로갔습니다">
                 </div>
-            <div class="image-button" id="button7">
+            <div class="image-button" id="button6">
                 <img src="redo.png" alt="앞으로갔습니다">
                 </div>
-            <div class="image-button" id="button8">
+            <div class="image-button" id="button7">
                 <img src="zoomin.png" alt="확대했습니다">
                 </div>
-            <div class="image-button" id="button9">
+            <div class="image-button" id="button8">
                 <img src="zoomout.png" alt="축소했습니다">
                 </div>
         </div>
