@@ -4,7 +4,7 @@ div,textarea{box-sizing:border-box;}
     width:100%;height:50px;border-bottom: 1px solid #b6b6b6;}  
 .logo{width:150px; text-align: center; line-height: 50px;margin:0 auto; font-size: 24px;}
  .tarea{width: 100%;height:500px; background-color:
-         #fafcbd;font-size:16px;padding:20px; margin:0px; border:1px solid #b6b6b6; border-left:none; border-right:none;}
+         #fafcbd;font-size:16px;padding:20px; margin:0px; border:1px solid #b6b6b6; border-left:none; border-right:none; }
  #footer{font-size: 12px; color:#666;}
  .image-button 
         {box-sizing: border-box;
@@ -15,9 +15,9 @@ div,textarea{box-sizing:border-box;}
         }
  .image-button.active img {
         /* 활성화된 상태의 스타일을 정의합니다 */
-        background-color: #abb0ac;
+        background-color: #fff;
         color: #ffffff;
-        opacity: 0.5;}
+        opacity: 0.6;}
 .image-button img{
         width: 30px ;  
         } 
@@ -94,9 +94,34 @@ div,textarea{box-sizing:border-box;}
         border-bottom: 1px solid #ccc;
       }
 
-      #word-button{ border-right: 1px solid #b6b6b6;}
-
       #helpbtn{border-right: 1px solid #b6b6b6;}
+
+      #dark-button{border-right: 1px solid #b6b6b6;}
+
+      #size-button{border-right:1px solid #b6b6b6; }
+
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      body.dark-mode {
+        background-color: #000000;
+        color: #ffffff;
+      }
+      .image-button {
+        display: inline-block;
+        cursor: pointer;
+      }
+      .image-button img {
+        transition: filter 0.3s ease;
+      }
+      .image-button.dark-mode img {
+        filter: grayscale(100%);}
+      
+
+      
+      
      
       
      

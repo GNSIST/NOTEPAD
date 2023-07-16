@@ -82,31 +82,105 @@ $(document).ready(function() {
    });
  });
 
+ $(document).ready(function() {
+  $('#button4').click(function() {
+    $('#document-input').val(''); // textarea의 값을 빈 문자열로 설정하여 내용을 지웁니다.
+  });
+});
 
-$(document).ready(function(){
-   $('#button4').click(function(){
-      alert('오렸습니다')
-   });
+$(document).ready(function() {
+  $('#button4').hover(function() {
+    // 마우스 커서가 버튼 위에 올라갔을 때 실행되는 코드
+    $(this).addClass('active');
+  }, function() {
+    // 마우스 커서가 버튼을 벗어났을 때 실행되는 코드
+    $(this).removeClass('active');
+  });
 });
-$(document).ready(function(){
-   $('#button5').click(function(){
-      alert('복사했습니다')
-   })
-})
-$(document).ready(function(){
-   $('#button6').click(function(){
-      alert('붙여넣기했습니다')
-   })
-})
-$(document).ready(function(){
-   $('#button7').click(function(){  
-      alert('뒤로갔습니다')
-   });
+
+$(document).ready(function() {
+  var undoStack = []; // 작업 이력을 저장할 스택
+
+  // 버튼5 클릭 이벤트 핸들러
+  $('#button5').click(function() {
+    if (undoStack.length > 0) {
+      var previousContent = undoStack.pop(); // 이전 작업 가져오기
+      $('#document-input').val(previousContent); // textarea 내용 설정
+    }
+  });
+
+  // textarea 내용이 변경되었을 때 작업을 스택에 저장하는 로직
+  $('#document-input').on('input', function() {
+    var currentContent = $(this).val();
+    undoStack.push(currentContent);
+  });
 });
-$(document).ready(function(){
-   $('#button8').click(function(){  
-      alert('앞으로갔습니다')
-   });
+$(document).ready(function() {
+  $('#button5').hover(function() {
+    // 마우스 커서가 버튼 위에 올라갔을 때 실행되는 코드
+    $(this).addClass('active');
+  }, function() {
+    // 마우스 커서가 버튼을 벗어났을 때 실행되는 코드
+    $(this).removeClass('active');
+  });
+});
+
+$(document).ready(function() {
+  var undoStack = []; // 작업 이력을 저장할 스택
+  var redoStack = []; // 취소된 작업 이력을 저장할 스택
+
+  // 버튼6 클릭 이벤트 핸들러
+  $('#button6').click(function() {
+    if (redoStack.length > 0) {
+      var previousContent = redoStack.pop(); // 이전 작업 가져오기
+      redoStack.push(previousContent); // undo 스택에 추가
+      $('#document-input').val(previousContent); // textarea 내용 설정
+    }
+  });
+
+  // textarea 내용이 변경되었을 때 작업을 스택에 저장하는 로직
+  $('#document-input').on('input', function() {
+    var currentContent = $(this).val();
+    redoStack.push(currentContent); // undo 스택에 추가
+    undoStack = []; // redo 스택 비우기
+  });
+});
+$(document).ready(function() {
+  $('#button6').hover(function() {
+    // 마우스 커서가 버튼 위에 올라갔을 때 실행되는 코드
+    $(this).addClass('active');
+  }, function() {
+    // 마우스 커서가 버튼을 벗어났을 때 실행되는 코드
+    $(this).removeClass('active');
+  });
+});
+
+$(document).ready(function() {
+  var currentZoom = 100; // 현재 확대 비율 (%)
+
+  // 버튼7 클릭 이벤트 핸들러
+  $('#button7').click(function() {
+    currentZoom += 5; // 확대 비율 5% 증가
+    applyZoom();
+  });
+
+  // 버튼8 클릭 이벤트 핸들러
+  $('#button8').click(function() {
+    currentZoom -= 5; // 확대 비율 5% 감소
+    applyZoom();
+  });
+
+  // 화면에 확대 비율 적용하는 함수
+  function applyZoom() {
+    $('#document-input').css('zoom', currentZoom + '%');
+  }
+  
+  // 버튼7, 버튼8에 hover 클래스 추가 및 제거
+  $('#button7, #button8').hover(function() {
+    $(this).addClass('active');
+  }, function() {
+    $(this).removeClass('active');
+  });
 });
 
 
@@ -253,25 +327,6 @@ function changeFontFamily(fontFamily) {
   $('.dropdown-content').removeClass('show');
 }
 
-/*스크롤기능*/
-$('.dropdown-content').scroll(function() {
-  var scrollPos = $(this).scrollTop();
-  if (scrollPos > 0) {
-    $('.dropdown-content').addClass('scroll-active');
-  } else {
-    $('.dropdown-content').removeClass('scroll-active');
-  }
-});
-
-function changeFontFamily(fontFamily) {
-$('#document-input').css('font-family', fontFamily);
-$('.dropdown-content').removeClass('show');
-}
-
-function changeFontFamily(fontFamily) {
-  $('#document-input').css('font-family', fontFamily);
-  $('.dropdown-content').removeClass('show');
-}
 
 /*폰트크기*/
 $(document).ready(function() {
@@ -290,5 +345,85 @@ $(document).ready(function() {
   });
 });
 
-/*전체삭제*/
+/*흑백모드*/
 
+$(document).ready(function() {
+  const documentInput = $('#document-input');
+  const darkButton = $('#dark-button');
+  const body = $('body');
+  const imageButtons = $('.image-button');
+
+  // 다크 모드로 전환
+  function enableDarkMode() {
+    body.css('background-color', '#000000');
+    body.css('color', '#ffffff');
+    documentInput.css('background-color', '#000000');
+    documentInput.css('color', '#fafcbd');
+    darkButton.html('<i class="fas fa-eye"></i><span></span>');
+    darkButton.addClass('active');
+
+    // 이미지 버튼에 흑백 모드 적용
+    imageButtons.find('img').css('filter', 'grayscale(100%)');
+  }
+
+  // 'Night' 버튼 클릭 이벤트
+  darkButton.click(function() {
+    if (darkButton.hasClass('active')) {
+      body.css('background-color', '');
+      body.css('color', '');
+      documentInput.css('background-color', '');
+      documentInput.css('color', '');
+      darkButton.html('<i class="fas fa-eye"></i><span></span>');
+      darkButton.removeClass('active');
+
+      // 이미지 버튼의 흑백 모드 제거
+      imageButtons.find('img').css('filter', 'none');
+    } else {
+      enableDarkMode();
+    }
+  });
+
+  // 이미지 버튼 클릭 이벤트
+  imageButtons.click(function() {
+    // 이미지 버튼을 토글합니다
+    $(this).toggleClass('active');
+
+    // 흑백 모드 여부를 확인하여 이미지에 필터 효과를 적용합니다
+    if ($(this).hasClass('active')) {
+      $(this).find('img').css('filter', 'grayscale(100%)');
+    } else {
+      $(this).find('img').css('filter', 'none');
+    }
+  });
+});
+
+$(document).ready(function() {
+  const imageButtons = $('.image-button');
+  const body = $('body');
+
+  imageButtons.click(function() {
+    $(this).toggleClass('dark-mode');
+    body.toggleClass('dark-mode');
+  });
+});
+
+$(document).ready(function() {
+  const imageButtons = $('.image-button');
+  const body = $('body');
+
+  // 이미지 버튼 클릭 이벤트
+  imageButtons.click(function() {
+    // 이미지 버튼을 토글합니다
+    $(this).toggleClass('dark-mode');
+
+    // 흑백 모드 여부를 확인하여 이미지에 필터 효과를 적용합니다
+    if ($(this).hasClass('dark-mode')) {
+      $(this).find('img').css('filter', 'grayscale(100%)');
+    } else {
+      $(this).find('img').css('filter', 'none');
+    }
+
+    // 다크 모드 전환
+    body.toggleClass('dark-mode');
+  });
+});
